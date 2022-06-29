@@ -43,28 +43,28 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-//        val coba = apiInterface.getDatacoba()
-//        coba.enqueue(object : Callback<List<Data1Item>?> {
-//            override fun onResponse(
-//                call: Call<List<Data1Item>?>,
-//                response: Response<List<Data1Item>?>
-//            ) {
-//
-//                val responseBody = response.body()!!
-//                val myStringBuilder = StringBuilder()
-//                for (myData in responseBody) {
-//                    myStringBuilder.append(myData.title)
-//                    myStringBuilder.append("/n")
-//                }
-//                txtId2.text = myStringBuilder
-//            }
-//
-//
-//            override fun onFailure(call: Call<List<Data1Item>?>, t: Throwable) {
-//                Toast.makeText(this@MainActivity, "data gagal", Toast.LENGTH_SHORT).show()
-//                Log.d("main activity", "failed to load data"+t.message)
-//            }
-//        })
+        val coba = apiInterface.getDatacoba()
+        coba.enqueue(object : Callback<List<Data1Item>?> {
+            override fun onResponse(
+                call: Call<List<Data1Item>?>,
+                response: Response<List<Data1Item>?>
+            ) {
+
+                val responseBody = response.body()!!
+                val myStringBuilder = StringBuilder()
+                for (myData in responseBody) {
+                    myStringBuilder.append(myData.title)
+                    myStringBuilder.append("/n")
+                }
+                txtId2.text = myStringBuilder
+            }
+
+
+            override fun onFailure(call: Call<List<Data1Item>?>, t: Throwable) {
+                Toast.makeText(this@MainActivity, "data gagal", Toast.LENGTH_SHORT).show()
+                Log.d("main activity", "failed to load data"+t.message)
+            }
+        })
 //
         val user2 = apiInterface2.getResponse()
         user2.enqueue(object : Callback<List<UserProfile>?> {
@@ -73,10 +73,10 @@ class MainActivity : AppCompatActivity() {
 
                 val myStringBuilder = StringBuilder()
                 for (myData in responseBody) {
-                    myStringBuilder.append(myData.data)
+                    myStringBuilder.append(myData.status)
                     myStringBuilder.append("/n")
                 }
-                txtId.text = myStringBuilder
+                txtId3.text = myStringBuilder
             }
 
 
